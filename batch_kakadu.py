@@ -12,6 +12,7 @@ parser.add_argument('--orig_path',help='path to orig image dataset', default='or
 parser.add_argument('--represent_path',help='path to represent of kakadu', default='represent/')
 parser.add_argument('--recon_path',help='path to recon image dataset', default='recon/')
 parser.add_argument('--cr',type=int,default=20)
+parser.add_argument('--coe',type=int,default=24)
 parser.add_argument('--image_format',help='format of the image', default='bmp')
 opt = parser.parse_args()
 
@@ -40,7 +41,7 @@ psnr_number = []
 ssim_number = []
 for idx in range(num_files):
     locals()['total_cr_'+str(idx)+''] = opt.cr * 8 / calc_ent(np.loadtxt('%s/y_%d.txt' %(opt.y_path,idx),dtype='int'))
-    locals()['bpp_'+str(idx)+''] = 8 / locals()['total_cr_'+str(idx)+'']
+    locals()['bpp_'+str(idx)+''] = opt.coe / locals()['total_cr_'+str(idx)+'']
     os.system('./kdu_compress -i %s/orig_%d.%s -o %s/out_%d.j2c -rate %.5f' %(opt.orig_path,idx,opt.image_format,opt.represent_path,idx,locals()['bpp_'+str(idx)+'']))
 
     y_number.append(str(idx))
