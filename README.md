@@ -7,7 +7,7 @@ For the compression algorithm designed by the researcher, each image will get a 
 The script automatically calculates the entropy coding multiple of the compression representation y in the folder, multiplies the measurement rate to obtain the total compression multiple, converts to the pixel depth bpp, automatically calls kakadu, reconstructs the corresponding original image in the folder, and obtains PSNR and SSIM values for all results.
 
 The total compression ratio is calculated as follows:
-![](http://latex.codecogs.com/gif.latex?\\total\\;cr = cr *\\frac{8}{Bit}*entropy\\;cr})
+![](http://latex.codecogs.com/gif.latex?\total\;cr = cr *\frac{8}{Bit}*entropy\;cr)
 
 $$
 total\;cr = cr *\frac{8}{Bit}*entropy\;cr
